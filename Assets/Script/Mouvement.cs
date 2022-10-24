@@ -78,9 +78,16 @@ public class Mouvement : MonoBehaviour
 
     private void _MoveStart(InputAction.CallbackContext obj)
     {
-        _playerMovement = obj.ReadValue<Vector2>();
-        _animator.SetBool("Mouv", true);
+        if (_isGrounded)
+        {
+         _playerMovement = obj.ReadValue<Vector2>();
         _playerState = StatePlayer.Walk;
+        _animator.SetBool("Mouv", true);
+        }
+        else
+        {
+
+        }
     }
 
     // Update is called once per frame
