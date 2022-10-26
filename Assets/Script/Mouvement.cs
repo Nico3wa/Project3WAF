@@ -6,11 +6,14 @@ using UnityEngine.InputSystem;
 
 public class Mouvement : MonoBehaviour
 {
-  public   enum StatePlayer { IDLE, Run, Walk, Crounch }
+  public   enum StatePlayer { IDLE, Run, Walk,}
    public  enum Attack { Base, Special , UpBase , SpecialBase,none}
+
+    public enum Jump { Jumping, Landing,}
+
     [SerializeField] InputActionReference _MoveInput;
     [SerializeField] InputActionReference _AttackInput;
-
+    [SerializeField] InputActionReference _JumpInput;
     [SerializeField] Transform _raycastRoot;
     [SerializeField] Vector3 raycastDirection;
     public bool _isGrounded;
@@ -22,7 +25,8 @@ public class Mouvement : MonoBehaviour
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] float _MoveAttack;
     [SerializeField] float _currentspeed;
-
+    [SerializeField] float _jumpPower;
+   
     public Vector2 PlayerMovement { get => _playerMovement; set => _playerMovement = value; }
     public Animator Animator { get => _animator; set => _animator = value; }
     public Attack AttackState { get => _Attack; set => _Attack = value; }
@@ -30,22 +34,37 @@ public class Mouvement : MonoBehaviour
 
     StatePlayer _playerState;
     Attack _Attack;
+    Jump _jump;
     // Start is called before the first frame update
     void Start()
     {
         _playerState = StatePlayer.IDLE;
         _Attack = Attack.none;
         _currentspeed = _speed;
-
+        // attack 
          _AttackInput.action.started += AttackStart;
        // _AttackInput.action.performed += updateAttack;
         _AttackInput.action.started += AttackEnd; 
-
+        
+        // movement
         _MoveInput.action.started += _MoveStart;
         _MoveInput.action.performed += updateMove;
         _MoveInput.action.canceled += endMove;
+
+
+        // Jump
+        _JumpInput.action.started += JumpStart;
+        
     }
 
+    private void JumpStart(InputAction.CallbackContext obj)
+    {
+        if (_isGrounded == true)
+        {
+        _rb.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
+            _jump = Jump.Jumping;
+        }
+    }
 
     private void AttackEnd(InputAction.CallbackContext obj)
     {
@@ -62,6 +81,7 @@ public class Mouvement : MonoBehaviour
         _animator.SetTrigger("attack");
         _Attack = Attack.Base;
     }
+    
     
 
     private void endMove(InputAction.CallbackContext obj)
@@ -115,6 +135,14 @@ public class Mouvement : MonoBehaviour
             Debug.DrawLine(_raycastRoot.position, _raycastRoot.position + raycastDirection, Color.red);
             _isGrounded = false;
        
+        }
+        if (_isGrounded ==  true)
+        {
+          
+        }
+        else
+        {
+            _jump = Jump.Landing;
         }
 
     }
