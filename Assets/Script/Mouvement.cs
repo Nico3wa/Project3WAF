@@ -12,11 +12,12 @@ public class Mouvement : MonoBehaviour
     public enum Jump { Jumping, Landing, none, addJump, }
 
     [SerializeField] ParticleSystem _DashDust;
+    [SerializeField] ParticleSystem run;
 
     [SerializeField] InputActionReference _MoveInput;
     [SerializeField] InputActionReference _AttackInput;
     [SerializeField] InputActionReference _JumpInput;
- //    [SerializeField] InputActionReference _dash;
+    //    [SerializeField] InputActionReference _dash;
 
     [SerializeField] Transform _raycastRoot, _raycastRoot2;
     [SerializeField] Transform _raycastHead;
@@ -36,7 +37,7 @@ public class Mouvement : MonoBehaviour
 
     private bool candash;
     private bool isdash;
-    [SerializeField] float dashingPower = 24f;
+    [SerializeField] float dashingPower;
     private float dashingCooldown = 1f;
     private float dashingTime = 0.2f;
 
@@ -80,20 +81,20 @@ public class Mouvement : MonoBehaviour
         candash = true;
     }
 
-  /*  private void StartDash(InputAction.CallbackContext obj)
-    {
-        Debug.Log("Dash");
-        //if (candash)
-        //{
-        //    _playerMovement = obj.ReadValue<Vector2>();
-        //    StartCoroutine(Dash());
-        //}
-    }*/
+    /*  private void StartDash(InputAction.CallbackContext obj)
+      {
+          Debug.Log("Dash");
+          //if (candash)
+          //{
+          //    _playerMovement = obj.ReadValue<Vector2>();
+          //    StartCoroutine(Dash());
+          //}
+      }*/
 
     private void JumpStart(InputAction.CallbackContext obj)
     {
         #region JumpMode
-       // if spamming jump
+        // if spamming jump
         if (_jumpCount >= _JumpHeight.Length) return;
         // Stop last jump routine
         if (_jumpUpRoutine != null)
@@ -105,9 +106,9 @@ public class Mouvement : MonoBehaviour
         {
             _animator.SetTrigger("double");
         }
-        
 
-            _jumpUpRoutine = StartCoroutine(JumpRoutine()); // on fait devenir JumpUpRoutine en la Coroutine JumpRoutine
+
+        _jumpUpRoutine = StartCoroutine(JumpRoutine()); // on fait devenir JumpUpRoutine en la Coroutine JumpRoutine
 
         IEnumerator JumpRoutine()
         {
@@ -142,14 +143,14 @@ public class Mouvement : MonoBehaviour
                 }
             }
             _jumpUpRoutine = null;
-        } 
+        }
         #endregion
-       /* if (_isGrounded == true)
-        {
-            _animator.SetTrigger("Jump");
-            _rb.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
-            _jump = Jump.Jumping;
-        }*/
+        /* if (_isGrounded == true)
+         {
+             _animator.SetTrigger("Jump");
+             _rb.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
+             _jump = Jump.Jumping;
+         }*/
     }
 
     private void JumpStop(InputAction.CallbackContext obj)
@@ -199,8 +200,8 @@ public class Mouvement : MonoBehaviour
         var inputSign = Mathf.Sign(obj.ReadValue<Vector2>().x);
         bool hasSameSign = inputSign == Mathf.Sign(_lastDirection.x);
 
-        if (interval < _doubleTapInterval && 
-            candash && 
+        if (interval < _doubleTapInterval &&
+            candash &&
             hasSameSign)
         {
             Debug.Log("Dash");
@@ -307,8 +308,23 @@ public class Mouvement : MonoBehaviour
 
             }
         }
+
+        if (_playerState == StatePlayer.Walk)
+        {
+            //Run();
+            if (run.isPlaying == false)
+            {
+                run.Play();
+            }
+            Debug.Log("start");
+        }
         else
         {
+            if (run.isPlaying)
+            {
+                run.Stop();
+            }
+            Debug.Log("stop");
 
         }
         //---------------
@@ -328,9 +344,13 @@ public class Mouvement : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         candash = true;
     }
-  
-   private void Dash()
+
+    private void Dash()
     {
         _DashDust.Play();
+    }
+    private void Run()
+    {
+        run.Play();
     }
 }
