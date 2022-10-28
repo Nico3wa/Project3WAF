@@ -19,6 +19,8 @@ public class Mouvement : MonoBehaviour
  //    [SerializeField] InputActionReference _dash;
 
     [SerializeField] Transform _raycastRoot, _raycastRoot2;
+    [SerializeField] Transform _raycastHead;
+    [SerializeField] Vector3 _head;
     [SerializeField] Vector3 raycastDirection;
     public bool _isGrounded;
     [SerializeField] Transform _root;
@@ -91,7 +93,7 @@ public class Mouvement : MonoBehaviour
     private void JumpStart(InputAction.CallbackContext obj)
     {
         #region JumpMode
-        // if spamming jump
+       // if spamming jump
         if (_jumpCount >= _JumpHeight.Length) return;
         // Stop last jump routine
         if (_jumpUpRoutine != null)
@@ -103,9 +105,9 @@ public class Mouvement : MonoBehaviour
         {
             _animator.SetTrigger("double");
         }
+        
 
-
-        _jumpUpRoutine = StartCoroutine(JumpRoutine()); // on fait devenir JumpUpRoutine en JumpRoutine
+            _jumpUpRoutine = StartCoroutine(JumpRoutine()); // on fait devenir JumpUpRoutine en la Coroutine JumpRoutine
 
         IEnumerator JumpRoutine()
         {
@@ -126,16 +128,28 @@ public class Mouvement : MonoBehaviour
                 // etre manoeuvrable par d'autre action et bien sur sa suis la courbe jusqu'a sont le temps actuel.
                 transform.position = new Vector3(transform.position.x, startPos.y, transform.position.z) +
                     (Vector3.up * currentCurve.Evaluate(time));
+
+                var hit2 = Physics2D.Raycast(_raycastHead.position, _head, _head.magnitude, LayerMask.GetMask("Ground"));
+                if (hit2.collider)
+                {
+                    Debug.DrawLine(_raycastHead.position, _raycastHead.position + _head, Color.red);
+                    StopCoroutine(_jumpUpRoutine);
+                    _jumpUpRoutine = null;
+                }
+                else
+                {
+                    Debug.DrawLine(_raycastHead.position, _raycastHead.position + _head, Color.magenta);
+                }
             }
             _jumpUpRoutine = null;
-        }
-        /*    if (_isGrounded == true)
-             {
-                _animator.SetTrigger("Jump");
-               _rb.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
-               _jump = Jump.Jumping;
-            }*/
+        } 
         #endregion
+       /* if (_isGrounded == true)
+        {
+            _animator.SetTrigger("Jump");
+            _rb.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
+            _jump = Jump.Jumping;
+        }*/
     }
 
     private void JumpStop(InputAction.CallbackContext obj)
