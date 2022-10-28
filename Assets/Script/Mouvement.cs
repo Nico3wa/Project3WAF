@@ -11,10 +11,12 @@ public class Mouvement : MonoBehaviour
 
     public enum Jump { Jumping, Landing, none, addJump, }
 
+    [SerializeField] ParticleSystem _DashDust;
+
     [SerializeField] InputActionReference _MoveInput;
     [SerializeField] InputActionReference _AttackInput;
     [SerializeField] InputActionReference _JumpInput;
-    [SerializeField] InputActionReference _dash;
+ //    [SerializeField] InputActionReference _dash;
 
     [SerializeField] Transform _raycastRoot, _raycastRoot2;
     [SerializeField] Vector3 raycastDirection;
@@ -76,7 +78,7 @@ public class Mouvement : MonoBehaviour
         candash = true;
     }
 
-    private void StartDash(InputAction.CallbackContext obj)
+  /*  private void StartDash(InputAction.CallbackContext obj)
     {
         Debug.Log("Dash");
         //if (candash)
@@ -84,7 +86,7 @@ public class Mouvement : MonoBehaviour
         //    _playerMovement = obj.ReadValue<Vector2>();
         //    StartCoroutine(Dash());
         //}
-    }
+    }*/
 
     private void JumpStart(InputAction.CallbackContext obj)
     {
@@ -188,6 +190,7 @@ public class Mouvement : MonoBehaviour
             hasSameSign)
         {
             Debug.Log("Dash");
+            Dash();
             StartCoroutine(Dash(inputSign));
         }
 
@@ -279,7 +282,6 @@ public class Mouvement : MonoBehaviour
         // Mouvement -----------
         if (_playerState == StatePlayer.Walk || _jump == Jump.Landing)
         {
-
             _root.transform.Translate(_playerMovement * Time.fixedDeltaTime * _currentspeed, Space.World);
             if (_playerMovement.x > 0)
             {
@@ -312,5 +314,9 @@ public class Mouvement : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         candash = true;
     }
-
+  
+   private void Dash()
+    {
+        _DashDust.Play();
+    }
 }

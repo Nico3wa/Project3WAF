@@ -5366,7 +5366,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 1, y: -3}
+        - {x: 0, y: 8}
+        - {x: 8, y: 8}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: 11c9b4f478450df459e345d0861df38b
@@ -5471,7 +5475,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: -8, y: 8}
+        - {x: 1, y: 8}
+        - {x: -1, y: -3}
       tessellationDetail: 0
       bones: []
       spriteID: 9c5b159410e44764daca591fd7a3be10
@@ -6395,7 +6403,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: -2, y: -3}
+        - {x: 8, y: 7}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: 48c85f8c993e89e468ffc67e10a56833
@@ -6500,7 +6512,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: -8, y: 8}
+        - {x: 1, y: -1}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: a271d3a737f83ae48a2579883855ece0
@@ -13262,7 +13278,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 0, y: -3}
+        - {x: 0, y: 8}
+        - {x: 8, y: 8}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: a099cb4db9d4b214d981e3d28404cc02
@@ -13367,7 +13387,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: -8, y: 8}
+        - {x: 0, y: 8}
+        - {x: -1, y: -3}
       tessellationDetail: 0
       bones: []
       spriteID: c605523706d0d4347bcaa3f7a039c6d5
@@ -14375,7 +14399,12 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 1, y: -8}
+        - {x: -8, y: -8}
+        - {x: -1, y: -2}
+        - {x: 8, y: 8}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: e6385fd0c6bce424a95e9309745fbc90
@@ -14480,7 +14509,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: -8, y: 8}
+        - {x: 1, y: -1}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: 655e295ab373a4f47a5587638a585051
@@ -16047,11 +16080,11 @@ TextureImporter:
       SET1_Mainlev_build_191: 2099989124
       SET1_Mainlev_build_278: 1124306709
       SET1_Mainlev_build_55: -1836449966
-      SET1_Mainlev_build_215: -1613730297
+      SET1_Mainlev_build_482: -802928500
       SET1_Mainlev_build_63: -1413726013
       SET1_Mainlev_build_450: -2027858061
       SET1_Mainlev_build_746: -1618072894
-      SET1_Mainlev_build_482: -802928500
+      SET1_Mainlev_build_215: -1613730297
       SET1_Mainlev_build_154: -1210575092
       SET1_Mainlev_build_452: -113128218
       SET1_Mainlev_build_391: 1609719239
@@ -16176,10 +16209,12 @@ TextureImporter:
       SET1_Mainlev_build_639: -2135415250
       SET1_Mainlev_build_202: 1349603929
       SET1_Mainlev_build_138: 1125241062
-      SET1_Mainlev_build_271: 228839802
+      SET1_Mainlev_build_444: 1882509117
+      SET1_Mainlev_build_577: 1593441205
       SET1_Mainlev_build_19: -591311745
-      SET1_Mainlev_build_557: -1611343981
+      SET1_Mainlev_build_271: 228839802
       SET1_Mainlev_build_3: -785247049
+      SET1_Mainlev_build_557: -1611343981
       SET1_Mainlev_build_378: -241185843
       SET1_Mainlev_build_119: -1104628169
       SET1_Mainlev_build_194: 181172622
@@ -16194,10 +16229,8 @@ TextureImporter:
       SET1_Mainlev_build_449: -1324674943
       SET1_Mainlev_build_273: 108673410
       SET1_Mainlev_build_159: 874752127
-      SET1_Mainlev_build_444: 1882509117
       SET1_Mainlev_build_196: -1778418127
       SET1_Mainlev_build_713: -1729987387
-      SET1_Mainlev_build_577: 1593441205
       SET1_Mainlev_build_642: -178816533
       SET1_Mainlev_build_384: -1973866236
       SET1_Mainlev_build_523: -2049021382
@@ -16282,14 +16315,14 @@ TextureImporter:
       SET1_Mainlev_build_690: 2098098467
       SET1_Mainlev_build_155: -1563888543
       SET1_Mainlev_build_161: -832657404
-      SET1_Mainlev_build_483: -1213540769
       SET1_Mainlev_build_638: 1756947010
-      SET1_Mainlev_build_703: 1335299733
-      SET1_Mainlev_build_565: 1330244289
       SET1_Mainlev_build_675: 1609373071
+      SET1_Mainlev_build_483: -1213540769
+      SET1_Mainlev_build_565: 1330244289
+      SET1_Mainlev_build_703: 1335299733
       SET1_Mainlev_build_57: -2056723786
-      SET1_Mainlev_build_291: 528013613
       SET1_Mainlev_build_711: 412310872
+      SET1_Mainlev_build_291: 528013613
       SET1_Mainlev_build_158: 578357043
       SET1_Mainlev_build_585: -932395189
       SET1_Mainlev_build_729: 1003737097
@@ -16640,30 +16673,30 @@ TextureImporter:
       SET1_Mainlev_build_454: 293437788
       SET1_Mainlev_build_701: -1223267524
       SET1_Mainlev_build_17: -835661046
-      SET1_Mainlev_build_374: 2010456523
-      SET1_Mainlev_build_413: -2098687749
+      SET1_Mainlev_build_433: -1501981694
       SET1_Mainlev_build_414: -56580419
       SET1_Mainlev_build_287: 1561824815
       SET1_Mainlev_build_678: 1552570034
       SET1_Mainlev_build_60: 574144077
+      SET1_Mainlev_build_374: 2010456523
       SET1_Mainlev_build_689: 1216052391
-      SET1_Mainlev_build_433: -1501981694
+      SET1_Mainlev_build_413: -2098687749
       SET1_Mainlev_build_324: 507630985
       SET1_Mainlev_build_344: 435514224
       SET1_Mainlev_build_217: 737257823
-      SET1_Mainlev_build_518: -1879971739
+      SET1_Mainlev_build_567: 1022923596
       SET1_Mainlev_build_210: 903917612
       SET1_Mainlev_build_66: 15048724
-      SET1_Mainlev_build_567: 1022923596
       SET1_Mainlev_build_337: -1618890333
+      SET1_Mainlev_build_518: -1879971739
       SET1_Mainlev_build_719: -2085221377
       SET1_Mainlev_build_645: -675666327
       SET1_Mainlev_build_245: -1847649365
       SET1_Mainlev_build_445: 270793228
-      SET1_Mainlev_build_446: -1639485152
       SET1_Mainlev_build_502: 115669670
-      SET1_Mainlev_build_660: -1662369268
       SET1_Mainlev_build_618: -1861987084
+      SET1_Mainlev_build_446: -1639485152
+      SET1_Mainlev_build_660: -1662369268
       SET1_Mainlev_build_636: -603718741
       SET1_Mainlev_build_99: -1756334670
       SET1_Mainlev_build_234: 2136120968
