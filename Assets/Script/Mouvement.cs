@@ -316,7 +316,7 @@ public class Mouvement : MonoBehaviour
             {
                 run.Play();
             }
-            Debug.Log("start");
+      //      Debug.Log("start");
         }
         else
         {
@@ -324,7 +324,7 @@ public class Mouvement : MonoBehaviour
             {
                 run.Stop();
             }
-            Debug.Log("stop");
+           // Debug.Log("stop");
 
         }
         //---------------

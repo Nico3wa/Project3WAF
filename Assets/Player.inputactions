@@ -68,15 +68,37 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "7b1d6a95-3663-4724-987b-5e6da918686c",
-                    "path": "<Keyboard>/z",
+                    "name": "Controller",
+                    "id": "24e9437c-9815-4393-a1ef-c853e66421d5",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
+                    "action": "Mouvement",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "13ffda84-4120-4ca8-81d6-305c15106366",
+                    "path": "<XInputController>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouvement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "7e8519f9-36a4-469b-9456-97cb6307b6c8",
+                    "path": "<XInputController>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouvement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -99,6 +121,28 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1277c800-1c8b-455e-9972-7664e1b4bfc6",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b1d6a95-3663-4724-987b-5e6da918686c",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -114,6 +158,11 @@
                     "isOR": false
                 }
             ]
+        },
+        {
+            "name": "Manette",
+            "bindingGroup": "Manette",
+            "devices": []
         }
     ]
 }
