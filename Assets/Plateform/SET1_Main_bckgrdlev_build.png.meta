@@ -101,6 +101,30 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -14392,14 +14416,14 @@ TextureImporter:
       SET1_Main_bckgrdlev_build_101: 582593331
       SET1_Main_bckgrdlev_build_222: -252729324
       SET1_Main_bckgrdlev_build_280: -590896783
-      SET1_Main_bckgrdlev_build_115: 1154535134
       SET1_Main_bckgrdlev_build_603: -2012072469
       SET1_Main_bckgrdlev_build_464: -1615681820
       SET1_Main_bckgrdlev_build_54: -1440306288
       SET1_Main_bckgrdlev_build_158: 60299941
+      SET1_Main_bckgrdlev_build_115: 1154535134
       SET1_Main_bckgrdlev_build_295: 616794147
-      SET1_Main_bckgrdlev_build_542: 971911639
       SET1_Main_bckgrdlev_build_99: 1041752953
+      SET1_Main_bckgrdlev_build_542: 971911639
       SET1_Main_bckgrdlev_build_407: -1014611472
       SET1_Main_bckgrdlev_build_335: 521123051
       SET1_Main_bckgrdlev_build_8: 452750709
@@ -14678,16 +14702,16 @@ TextureImporter:
       SET1_Main_bckgrdlev_build_250: 681274342
       SET1_Main_bckgrdlev_build_230: -1416709168
       SET1_Main_bckgrdlev_build_228: 585671855
+      SET1_Main_bckgrdlev_build_113: 179541358
       SET1_Main_bckgrdlev_build_76: -1276763025
       SET1_Main_bckgrdlev_build_12: 1232202291
-      SET1_Main_bckgrdlev_build_313: 1149867157
-      SET1_Main_bckgrdlev_build_51: 1178734659
       SET1_Main_bckgrdlev_build_343: -1575497905
+      SET1_Main_bckgrdlev_build_313: 1149867157
       SET1_Main_bckgrdlev_build_570: 1861270025
       SET1_Main_bckgrdlev_build_311: 405011350
       SET1_Main_bckgrdlev_build_162: -810210024
       SET1_Main_bckgrdlev_build_405: 550300783
-      SET1_Main_bckgrdlev_build_113: 179541358
+      SET1_Main_bckgrdlev_build_51: 1178734659
       SET1_Main_bckgrdlev_build_421: 631560096
       SET1_Main_bckgrdlev_build_320: -1724758912
       SET1_Main_bckgrdlev_build_420: 1512548757

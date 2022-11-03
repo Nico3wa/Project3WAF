@@ -35,7 +35,8 @@ public class Mouvement : MonoBehaviour
     [SerializeField] float _jumpPower;
     [SerializeField] AnimationCurve[] _JumpHeight;
 
-    private bool candash;
+    [SerializeField] LayerMask _mask;
+     private bool candash;
     private bool isdash;
     [SerializeField] float dashingPower;
     private float dashingCooldown = 1f;
@@ -49,6 +50,7 @@ public class Mouvement : MonoBehaviour
     StatePlayer _playerState;
     Attack _Attack;
     Jump _jump;
+
 
     Coroutine _jumpUpRoutine;
     int _jumpCount;
@@ -130,7 +132,7 @@ public class Mouvement : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, startPos.y, transform.position.z) +
                     (Vector3.up * currentCurve.Evaluate(time));
 
-                var hit2 = Physics2D.Raycast(_raycastHead.position, _head, _head.magnitude, LayerMask.GetMask("Ground"));
+                var hit2 = Physics2D.Raycast(_raycastHead.position, _head, _head.magnitude, _mask);
                 if (hit2.collider)
                 {
                     Debug.DrawLine(_raycastHead.position, _raycastHead.position + _head, Color.red);
