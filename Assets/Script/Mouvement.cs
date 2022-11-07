@@ -3,27 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 public class Mouvement : MonoBehaviour
 {
-    public enum StatePlayer { IDLE, Run, Walk, }
-    public enum Attack { Base, Special, UpBase, SpecialBase, none }
-
-    public enum Jump { Jumping, Landing, none, addJump, }
 
     [SerializeField] ParticleSystem _DashDust;
     [SerializeField] ParticleSystem run;
-
+    #region Input
     [SerializeField] InputActionReference _MoveInput;
     [SerializeField] InputActionReference _AttackInput;
     [SerializeField] InputActionReference _JumpInput;
+    [SerializeField] InputActionReference _TransformInput;
+    [SerializeField] InputActionReference _dash;
+    #endregion
     //    [SerializeField] InputActionReference _dash;
 
+    #region Raycast
     [SerializeField] Transform _raycastRoot, _raycastRoot2;
     [SerializeField] Transform _raycastHead;
     [SerializeField] Vector3 _head;
     [SerializeField] Vector3 raycastDirection;
     public bool _isGrounded;
+    #endregion
+    #region Mouv
     [SerializeField] Transform _root;
     [SerializeField] float _speed;
     [SerializeField] float _MovingThreshold;
@@ -42,28 +45,43 @@ public class Mouvement : MonoBehaviour
     private float dashingCooldown = 1f;
     private float dashingTime = 0.2f;
 
+    #endregion
+   
+    [SerializeField] PlayableDirector TRANSFORM;
+    [SerializeField] PlayerInput _input;
+ 
+    #region public ref
     public Vector2 PlayerMovement { get => _playerMovement; set => _playerMovement = value; }
     public Animator Animator { get => _animator; set => _animator = value; }
     public Attack AttackState { get => _Attack; set => _Attack = value; }
     public StatePlayer PlayerState { get => _playerState; set => _playerState = value; }
+    #endregion
 
+    #region state
     StatePlayer _playerState;
     Attack _Attack;
     Jump _jump;
+    public enum StatePlayer { IDLE, Run, Walk, }
+    public enum Attack { Base, Special, UpBase, SpecialBase, none }
 
+    public enum Jump { Jumping, Landing, none, addJump, }
+    #endregion
 
     Coroutine _jumpUpRoutine;
     int _jumpCount;
 
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        _playerState = StatePlayer.IDLE;
-        _Attack = Attack.none;
-        _currentspeed = _speed;
-        // attack 
+        
+    }
+
+    private void OnEnable()
+    {
+        // attack
         _AttackInput.action.started += AttackStart;
-        _AttackInput.action.started += AttackEnd;
+        _AttackInput.action.canceled += AttackEnd;
 
         // movement
         _MoveInput.action.started += _MoveStart;
@@ -75,12 +93,61 @@ public class Mouvement : MonoBehaviour
         _JumpInput.action.started += JumpStart;
         _JumpInput.action.canceled += JumpStop;
 
-        // Dash
+        // Transform
+        _TransformInput.action.started += StartTransform;
+
+
+        _dash.action.started += Dash;
+    }
+
+    void Dash(InputAction.CallbackContext obj)
+    {
+        if(candash)
+        {
+            StartCoroutine(Dash(Mathf.Sign(_lastDirection.x)));
+        }
+    }
+
+    private void OnDisable()
+    {
+        // attack
+        _AttackInput.action.started -= AttackStart;
+        _AttackInput.action.started -= AttackEnd;
+
+        // movement
+        _MoveInput.action.started -= _MoveStart;
+        _MoveInput.action.performed -= updateMove;
+        _MoveInput.action.canceled -= endMove;
+
+
+        // Jump
+        _JumpInput.action.started -= JumpStart;
+        _JumpInput.action.canceled -= JumpStop;
+
+        // Transform
+        _TransformInput.action.started -= StartTransform;
+    }
+
+    void Start()
+    {
+        _playerState = StatePlayer.IDLE;
+        _Attack = Attack.none;
+        _currentspeed = _speed;
+        
+            // Dash
         //_dash.action.started += StartDash;
         //state
+
         _jump = Jump.none;
 
         candash = true;
+
+    }
+
+    private void StartTransform(InputAction.CallbackContext obj)
+    {
+        Transform();
+        candash = false;
     }
 
     /*  private void StartDash(InputAction.CallbackContext obj)
@@ -129,7 +196,7 @@ public class Mouvement : MonoBehaviour
                 time += Time.deltaTime; // le temps on le fait correspondre au temps de la dernier frame/action efféctuer
                 // et la on fait bouger notre joueur en bougeant que sa Position Y initial avec StartPos mais on laisse les postion x et z
                 // etre manoeuvrable par d'autre action et bien sur sa suis la courbe jusqu'a sont le temps actuel.
-                transform.position = new Vector3(transform.position.x, startPos.y, transform.position.z) +
+                _root.transform.position = new Vector3(_root.transform.position.x, startPos.y, _root.transform.position.z) +
                     (Vector3.up * currentCurve.Evaluate(time));
 
                 var hit2 = Physics2D.Raycast(_raycastHead.position, _head, _head.magnitude, _mask);
@@ -198,20 +265,22 @@ public class Mouvement : MonoBehaviour
 
     private void _MoveStart(InputAction.CallbackContext obj)
     {
-        var interval = Time.time - _lastInputTime;
-        var inputSign = Mathf.Sign(obj.ReadValue<Vector2>().x);
-        bool hasSameSign = inputSign == Mathf.Sign(_lastDirection.x);
-
-        if (interval < _doubleTapInterval &&
-            candash &&
-            hasSameSign)
+        // Declenchement du dash
+        if(_input.currentControlScheme == "Keyboard")
         {
-            Debug.Log("Dash");
-            Dash();
-            StartCoroutine(Dash(inputSign));
+            var interval = Time.time - _lastInputTime;
+            var inputSign = Mathf.Sign(obj.ReadValue<Vector2>().x);
+            bool hasSameSign = inputSign == Mathf.Sign(_lastDirection.x);
+            if (interval < _doubleTapInterval &&
+                candash &&
+                hasSameSign)
+            {
+                Debug.Log("Dash");
+                StartCoroutine(Dash(inputSign));
+            }
+            _lastInputTime = Time.time;
         }
 
-        _lastInputTime = Time.time;
         _lastDirection = obj.ReadValue<Vector2>();
         if (_isGrounded)
         {
@@ -288,7 +357,7 @@ public class Mouvement : MonoBehaviour
 
         _animator.SetBool("Grounded", _isGrounded);
         // ---------------------------- 
-
+       
     }
     private void FixedUpdate()
     {
@@ -299,7 +368,10 @@ public class Mouvement : MonoBehaviour
         // Mouvement -----------
         if (_playerState == StatePlayer.Walk || _jump == Jump.Landing)
         {
+            {
             _root.transform.Translate(_playerMovement * Time.fixedDeltaTime * _currentspeed, Space.World);
+              }
+            //_rb.MovePosition(_rb.position + _playerMovement * Time.fixedDeltaTime * _currentspeed);
             if (_playerMovement.x > 0)
             {
                 _root.rotation = Quaternion.Euler(0, 0, 0);
@@ -334,6 +406,7 @@ public class Mouvement : MonoBehaviour
 
     private IEnumerator Dash(float sign)
     {
+        _DashDust.Play();
         _animator.SetTrigger("Dash");
         candash = false;
         isdash = true;
@@ -347,12 +420,12 @@ public class Mouvement : MonoBehaviour
         candash = true;
     }
 
-    private void Dash()
-    {
-        _DashDust.Play();
-    }
     private void Run()
     {
         run.Play();
+    }
+    private void Transform()
+    {
+        TRANSFORM.Play();
     }
 }
