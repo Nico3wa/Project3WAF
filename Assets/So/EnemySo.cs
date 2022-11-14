@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySo : ScriptableObject
 {
     [SerializeField] float _Maxhp;
-    [SerializeField] float _attack;
+    [SerializeField] int _attack;
     [SerializeField] float speed;
     [SerializeField] float _AttackCD;
     [SerializeField] string _name;
@@ -15,5 +15,5 @@ public class EnemySo : ScriptableObject
     public float AttackCD { get => _AttackCD; }
     public float Speed { get => speed; }
     public float Maxhp { get => _Maxhp;}
-    public float Attack { get => _attack;  }
+    public int Attack { get => _attack;  }
 }

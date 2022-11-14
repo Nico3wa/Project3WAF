@@ -70,13 +70,15 @@ public class Mouvement : MonoBehaviour
     bool _attacking;
     Coroutine _jumpUpRoutine;
     int _jumpCount;
+    [SerializeField] CharacterSo _myChar;
 
 
     // Start is called before the first frame update
 
     private void Awake()
     {
-        
+        _speed = _myChar.Speed;
+        _MoveAttack = _myChar.AtkSPeed;
     }
 
     private void OnEnable()

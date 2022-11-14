@@ -8,6 +8,9 @@ public class atk : MonoBehaviour
 
     [SerializeField] int _MyDamage;
     [SerializeField] BaseDmgSo _dmg;
+
+    public List<health> SavedCharacter { get => _savedCharacter;}
+
     // Start is called before the first frame update
 
 
@@ -17,6 +20,7 @@ public class atk : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.attachedRigidbody == null) return;
         var h = col.attachedRigidbody.GetComponent<health>();
         if (h != null)
         {
@@ -34,6 +38,7 @@ public class atk : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
+        if (col.attachedRigidbody == null) return;
         var h = col.attachedRigidbody.GetComponent<health>();
         if (h != null)
         {

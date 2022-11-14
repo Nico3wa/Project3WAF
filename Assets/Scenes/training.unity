@@ -822,21 +822,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5654387682969205372, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
-      propertyPath: _speed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5654387682969205372, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5654387682969205372, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
-      propertyPath: _jumpPower
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5654387682969205372, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
-      propertyPath: _currentspeed
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: _myChar
+      value: 
+      objectReference: {fileID: 11400000, guid: 917986d9f21723440a5fc787fbe97ddd, type: 2}
     - target: {fileID: 5654387683332473488, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
       propertyPath: m_SceneBindings.Array.size
       value: 15
@@ -859,6 +847,18 @@ PrefabInstance:
       objectReference: {fileID: 529851381}
     - target: {fileID: 5654387683332473491, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654387683373309173, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654387683373309173, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654387683373309173, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5654387683373309174, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
@@ -1272,10 +1272,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4999738464459586839, guid: 11120d587020d474dbfe6e4052858a20, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1283170750}
+    - target: {fileID: 5176024536952379344, guid: 11120d587020d474dbfe6e4052858a20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5176024537859651506, guid: 11120d587020d474dbfe6e4052858a20, type: 3}
       propertyPath: m_UsedByEffector
       value: 0
@@ -1332,6 +1332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pantin
       objectReference: {fileID: 0}
+    - target: {fileID: 6481106233770720568, guid: 11120d587020d474dbfe6e4052858a20, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1283170750}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11120d587020d474dbfe6e4052858a20, type: 3}
 --- !u!1 &2259725036142578140

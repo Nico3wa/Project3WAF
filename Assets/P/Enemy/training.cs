@@ -9,7 +9,8 @@ public class training : MonoBehaviour
     [SerializeField] string _name;
     [SerializeField] Animator _myAnimator;
     [SerializeField] Transform _root;
-
+    [SerializeField] bool _CanAttack;
+    [SerializeField] triggerAttack _atk;
     [SerializeField] GameObject target;
     State _State;
 
@@ -22,21 +23,61 @@ public class training : MonoBehaviour
         _State = State.IDLE;
         _myspeed = _myso.Speed;
         _name = _myso.Name;
+        _CanAttack = true;
     }
+
 
 
     private void Update()
     {
-        if (transform.position.x < target.transform.position.x)
+
+        switch (_State)
         {
-            _root.rotation = Quaternion.Euler(0, 0, 0);
+            case State.IDLE:
+
+
+                break;
+            case State.Walk:
+                // Walk Decision
+
+
+                break;
+            case State.Attack:
+
+                    if (_CanAttack == true && _atk.AttackRoutine1 != null)  // Attack dispo & pas d'attack en cours
+                                                                             //  || _atk.AttackRoutine1 != null)             // En train d'attaquer
+
+                    {
+                        // Let enemy attack
+                    }
+                
+                else
+                {
+                    _State = State.Reset;
+                }
+
+                break;
+            case State.Reset:
+
+
+
+
+                break;
+            default:
+                break;
+
+
+
 
         }
-        else
-        {
-            _root.rotation = Quaternion.Euler(0, 180, 0);
-        }
+                if (transform.position.x < target.transform.position.x)
+                {
+                    _root.rotation = Quaternion.Euler(0, 0, 0);
 
-
+                }
+                else
+                {
+                    _root.rotation = Quaternion.Euler(0, 180, 0);
+                }
     }
 }

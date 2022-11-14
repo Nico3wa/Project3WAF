@@ -861,6 +861,7 @@ MonoBehaviour:
   TRANSFORM: {fileID: 5654387683332473488}
   _input: {fileID: 5654387684276451895}
   _mouv: {fileID: 5654387683373309174}
+  _myChar: {fileID: 0}
   _doubleTapInterval: 0.5
 --- !u!95 &5654387682969205375
 Animator:
@@ -20792,6 +20793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5654387684261248525}
   - component: {fileID: 5654387684261248524}
+  - component: {fileID: 3128193166873537280}
   m_Layer: 0
   m_Name: Ichigo 1
   m_TagString: Untagged
@@ -20842,6 +20844,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3128193166873537280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654387684261248626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff4c12212e5a93498a2ac033556e951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Stat: {fileID: 11400000, guid: 917986d9f21723440a5fc787fbe97ddd, type: 2}
+  _animator: {fileID: 5654387683373309178}
+  _2nd: {fileID: 5654387682943144540}
 --- !u!1 &5654387684273418411
 GameObject:
   m_ObjectHideFlags: 0

@@ -71,8 +71,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679600b1302213b4bbce4d459b8a4cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Target: {fileID: 0}
   _Action: {fileID: 0}
+  _train: {fileID: 6481106233770720568}
+  _savedCharacter: []
 --- !u!1 &5176024537658102771
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +157,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5176024537859651509}
   - component: {fileID: 5176024537859651506}
-  - component: {fileID: 4999738464459586839}
   m_Layer: 0
   m_Name: Physic
   m_TagString: Untagged
@@ -195,24 +195,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.30999994, y: -0.68077755}
   m_Size: {x: 1.8187866, y: 2.361555}
   m_Direction: 0
---- !u!114 &4999738464459586839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5176024537859651508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 713b56c954e929149855f5b5fc23b657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _myso: {fileID: 11400000, guid: e8eb5dd805dd8744f804c089c7808cd2, type: 2}
-  _myspeed: 0
-  _name: 
-  _myAnimator: {fileID: 5176024538976727832}
-  _root: {fileID: 5176024538976727270}
-  target: {fileID: 0}
 --- !u!1 &5176024538976727837
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,6 +209,8 @@ GameObject:
   - component: {fileID: 5176024538976727835}
   - component: {fileID: 5176024538976727834}
   - component: {fileID: 5470779879415854481}
+  - component: {fileID: 2915043516496350427}
+  - component: {fileID: 6481106233770720568}
   m_Layer: 0
   m_Name: NightBorne 2
   m_TagString: Untagged
@@ -378,3 +362,37 @@ MonoBehaviour:
       m_Calls: []
   _animator: {fileID: 5176024538976727832}
   _Maxhp: {fileID: 11400000, guid: 66d838f79391e65409d5cfb7a207c1ec, type: 2}
+--- !u!114 &2915043516496350427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176024538976727837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e2659790e7a5d45b24c60536636883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trigg: {fileID: 5176024536952379358}
+  _so: {fileID: 11400000, guid: e8eb5dd805dd8744f804c089c7808cd2, type: 2}
+--- !u!114 &6481106233770720568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176024538976727837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 713b56c954e929149855f5b5fc23b657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myso: {fileID: 11400000, guid: e8eb5dd805dd8744f804c089c7808cd2, type: 2}
+  _myspeed: 0
+  _name: 
+  _myAnimator: {fileID: 5176024538976727832}
+  _root: {fileID: 5176024538976727270}
+  _CanAttack: 0
+  _atk: {fileID: 5176024536952379358}
+  target: {fileID: 0}
