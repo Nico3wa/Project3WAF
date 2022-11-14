@@ -49,12 +49,13 @@ public class Mouvement : MonoBehaviour
    
     [SerializeField] PlayableDirector TRANSFORM;
     [SerializeField] PlayerInput _input;
- 
+    [SerializeField] mouvProx _mouv;
     #region public ref
     public Vector2 PlayerMovement { get => _playerMovement; set => _playerMovement = value; }
     public Animator Animator { get => _animator; set => _animator = value; }
     public Attack AttackState { get => _Attack; set => _Attack = value; }
     public StatePlayer PlayerState { get => _playerState; set => _playerState = value; }
+    public bool Attacking { get => _attacking; set => _attacking = value; }
     #endregion
 
     #region state
@@ -66,9 +67,10 @@ public class Mouvement : MonoBehaviour
 
     public enum Jump { Jumping, Landing, none, addJump, }
     #endregion
-
+    bool _attacking;
     Coroutine _jumpUpRoutine;
     int _jumpCount;
+
 
     // Start is called before the first frame update
 
@@ -234,12 +236,23 @@ public class Mouvement : MonoBehaviour
 
     private void AttackEnd(InputAction.CallbackContext obj)
     {
+        _attacking = false;
         _Attack = Attack.none;
     }
 
     private void AttackStart(InputAction.CallbackContext obj)
     {
-        _animator.SetTrigger("attack");
+        if (isdash )
+        {
+            _animator.SetTrigger("DashAttack");
+            
+                }
+
+        else { 
+            _animator.SetTrigger("attack");
+             _attacking = true;
+                }
+
         _Attack = Attack.Base;
     }
 
@@ -265,7 +278,11 @@ public class Mouvement : MonoBehaviour
 
     private void _MoveStart(InputAction.CallbackContext obj)
     {
-        // Declenchement du dash
+       if (_attacking) 
+        {
+                
+        
+        }
         if(_input.currentControlScheme == "Keyboard")
         {
             var interval = Time.time - _lastInputTime;
@@ -301,18 +318,16 @@ public class Mouvement : MonoBehaviour
         {
             return;
         }
-
-
+        if (_attacking)
+        {
+            PlayerState = StatePlayer.IDLE;
+           
+        }
+        
+                
         //  SpeedChange---------------
-        if (_playerState == StatePlayer.Walk & _Attack == Attack.Base)
-        {
-            _currentspeed = _MoveAttack;
-
-        }
-        else if (_playerState == StatePlayer.Walk & _Attack == Attack.none || _jump == Jump.Landing)
-        {
-            _currentspeed = _speed;
-        }
+     
+        
 
         //----------------------
 
@@ -335,6 +350,7 @@ public class Mouvement : MonoBehaviour
         }
         //   --------------------
 
+       
 
         // State Change -----------
         if (_isGrounded == true)
@@ -428,4 +444,6 @@ public class Mouvement : MonoBehaviour
     {
         TRANSFORM.Play();
     }
+
+ 
 }

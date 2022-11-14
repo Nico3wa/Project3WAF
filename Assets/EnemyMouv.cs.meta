@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: fb0f3b5899bfb1e4e8da85af9af5eb93
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _myso: {instanceID: 0}
+  - _myAnimator: {instanceID: 0}
+  - _root: {instanceID: 0}
+  - _atk: {instanceID: 0}
+  - _final: {instanceID: 0}
+  - _initial: {instanceID: 0}
+  - _detect: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
