@@ -40,7 +40,7 @@ public class Mouvement : MonoBehaviour
 
     [SerializeField] LayerMask _mask;
      private bool candash;
-    private bool isdash;
+     bool isdash;
     [SerializeField] float dashingPower;
     private float dashingCooldown = 1f;
     private float dashingTime = 0.2f;
@@ -56,6 +56,8 @@ public class Mouvement : MonoBehaviour
     public Attack AttackState { get => _Attack; set => _Attack = value; }
     public StatePlayer PlayerState { get => _playerState; set => _playerState = value; }
     public bool Attacking { get => _attacking; set => _attacking = value; }
+    public Jump Jump1 { get => _jump; set => _jump = value; }
+    public bool Isdash { get => isdash; set => isdash = value; }
     #endregion
 
     #region state
@@ -280,7 +282,8 @@ public class Mouvement : MonoBehaviour
 
     private void _MoveStart(InputAction.CallbackContext obj)
     {
-       if (_attacking) 
+    
+       if (_attacking || isdash) 
         {
                 
         
@@ -444,7 +447,14 @@ public class Mouvement : MonoBehaviour
     }
     private void Transform()
     {
+        if (_isGrounded)
+        {
         TRANSFORM.Play();
+        }
+        else
+        {
+            return;
+        }
     }
 
  

@@ -13,13 +13,17 @@ public class training : MonoBehaviour
     [SerializeField] triggerAttack _atk;
     [SerializeField] GameObject target;
     State _State;
+    [SerializeField] float _CD;
 
     public Animator MyAnimator { get => _myAnimator; set => _myAnimator = value; }
 
     public State State1 { get => _State; set => _State = value; }
+    public float CD { get => _CD;}
+    public bool CanAttack { get => _CanAttack; set => _CanAttack = value; }
 
     void Start()
     {
+        _CD = _myso.AttackCD;
         _State = State.IDLE;
         _myspeed = _myso.Speed;
         _name = _myso.Name;

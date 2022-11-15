@@ -15,5 +15,5 @@ MonoBehaviour:
   _Maxhp: 120
   _attack: 25
   speed: 3
-  _AttackCD: 1
+  _AttackCD: 4
   _name: DarkKnight

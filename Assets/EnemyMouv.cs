@@ -86,7 +86,7 @@ public class EnemyMouv : MonoBehaviour
                 break;
             case State.Attack:
 
-                if (_detect.Player != null && _atk.Player != null)
+                if (_detect.Player != null && _atk.SavedCharacter != null)
                 {
                     if (_CanAttack == false && _atk.AttackRoutine1 != null)  // Attack dispo & pas d'attack en cours
                                                                              //  || _atk.AttackRoutine1 != null)             // En train d'attaquer

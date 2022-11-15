@@ -762,6 +762,11 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!95 &1171978388 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5654387683373309178, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+  m_PrefabInstance: {fileID: 1180613262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1180613262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -821,10 +826,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5654387682969205372, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
-      propertyPath: _myChar
-      value: 
-      objectReference: {fileID: 11400000, guid: 917986d9f21723440a5fc787fbe97ddd, type: 2}
     - target: {fileID: 5654387683332473488, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
       propertyPath: m_SceneBindings.Array.size
       value: 15
@@ -849,6 +850,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5654387683373309172, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5654387683373309173, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -868,6 +873,14 @@ PrefabInstance:
     - target: {fileID: 5654387683373309176, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654387684261248524, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_LinearDrag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654387684261248524, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_GravityScale
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5654387684261248525, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
       propertyPath: m_RootOrder
@@ -922,9 +935,49 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8428207542502181552, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1171978388}
+    - target: {fileID: 8428207542502181552, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9126448102839807693, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_InitialState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126448102839807693, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126448102839807693, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_SceneBindings.Array.data[0].key
+      value: 
+      objectReference: {fileID: 6718555940240983002, guid: c541db35b44f45c449e5f472ccb80ecf, type: 2}
+    - target: {fileID: 9126448102839807693, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_SceneBindings.Array.data[1].key
+      value: 
+      objectReference: {fileID: 7659432366787237434, guid: c541db35b44f45c449e5f472ccb80ecf, type: 2}
+    - target: {fileID: 9126448102839807693, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_SceneBindings.Array.data[2].key
+      value: 
+      objectReference: {fileID: -4795808288822118179, guid: c541db35b44f45c449e5f472ccb80ecf, type: 2}
+    - target: {fileID: 9126448102839807693, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_SceneBindings.Array.data[3].key
+      value: 
+      objectReference: {fileID: -8495001662069449533, guid: c541db35b44f45c449e5f472ccb80ecf, type: 2}
+    - target: {fileID: 9126448102839807693, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_SceneBindings.Array.data[0].value
+      value: 
+      objectReference: {fileID: 1171978388}
+    - target: {fileID: 9126448102839807693, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_SceneBindings.Array.data[2].value
+      value: 
+      objectReference: {fileID: 1283170754}
+    - target: {fileID: 9126448102839807693, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
+      propertyPath: m_SceneBindings.Array.data[3].value
+      value: 
+      objectReference: {fileID: 2105751150}
     - target: {fileID: 9138659002167062919, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
       propertyPath: rb
       value: 
@@ -1090,6 +1143,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5654387684261248525, guid: d93fa3d770d225941ad52f58f0b09a86, type: 3}
   m_PrefabInstance: {fileID: 1180613262}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1283170754
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283170750}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1653624498
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,8 +12,10 @@ public class Special1 : MonoBehaviour
     [SerializeField] Transform _spawn;
     [SerializeField] Instanciate Instanciate;
     [SerializeField] Mouvement _action;
-
+    [SerializeField] Animator _animator;
+ 
     [SerializeField] PlayableDirector GetsugaTensho;
+    [SerializeField] PlayableDirector _air;
 
     public Transform Spawn { get => _spawn; set => _spawn = value; }
 
@@ -25,7 +27,18 @@ public class Special1 : MonoBehaviour
 
     private void SpecialON(InputAction.CallbackContext obj)
     {
-        GetsugaTensho.Play();
+        if (_action._isGrounded && _action.Isdash == false && !_animator.GetBool("Mouv"))
+        {
+            GetsugaTensho.Play();
+        }
+        else if(!_animator.GetBool("doubleSaut") && _animator.GetBool("Landing") && _action.Isdash == false && !_animator.GetBool("Mouv"))
+        {
+            _air.Play();
+        }
+        else
+        {
+             return;
+        }
     }
     public void launch()
     {

@@ -6,14 +6,10 @@ public class triggerAttack : MonoBehaviour
 {
     [SerializeField] EnemyMouv _Action;
     [SerializeField] training _train;
-
     [SerializeField] List<PlayerStat> _savedCharacter;
-    GameObject _player;
-    public GameObject Player { get => _player; }
-
     Coroutine _attackRoutine;
     public Coroutine AttackRoutine1 { get => _attackRoutine; set => _attackRoutine = value; }
-    public List<PlayerStat> SavedCharacter { get => _savedCharacter;}
+    public List<PlayerStat> SavedCharacter { get => _savedCharacter; }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -21,20 +17,20 @@ public class triggerAttack : MonoBehaviour
         var h = col.attachedRigidbody.GetComponent<PlayerStat>();
         if (h != null)
         {
-                if (_savedCharacter.Contains(h))
+            if (_savedCharacter.Contains(h))
+            {
+                if (_Action != null)
                 {
-                    if (_Action != null)
-                    {
-                        _Action.MyAnimator.SetTrigger("isAttacking");
-                        _attackRoutine = StartCoroutine(AttackRoutine());
-                    }
-                    else
-                    {
-                        _train.MyAnimator.SetTrigger("isAttacking");
-                        _attackRoutine = StartCoroutine(AttackRoutine());
-
-                    }
+                    _Action.MyAnimator.SetTrigger("isAttacking");
+                    _attackRoutine = StartCoroutine(AttackRoutine());
                 }
+                else
+                {
+                    _train.MyAnimator.SetTrigger("isAttacking");
+                    _attackRoutine = StartCoroutine(AttackRoutine());
+
+                }
+            }
             else
             {
                 _savedCharacter.Add(h);
@@ -51,17 +47,17 @@ public class triggerAttack : MonoBehaviour
             {
                 if (_savedCharacter.Contains(h))
                 {
-                    if (_Action != null)
+                    if (_Action != null && _Action.CanAttack)
                     {
-                    _Action.MyAnimator.SetTrigger("isAttacking");
-                    _attackRoutine = StartCoroutine(AttackRoutine());
+                        _Action.MyAnimator.SetTrigger("isAttacking");
+                        _attackRoutine = StartCoroutine(AttackRoutine());
                     }
-                    else
+                    else if ( _train != null && _train.CanAttack)
                     {
                         _train.MyAnimator.SetTrigger("isAttacking");
                         _attackRoutine = StartCoroutine(AttackRoutine());
-                    
-                }
+
+                    }
                 }
             }
             else
@@ -87,33 +83,43 @@ public class triggerAttack : MonoBehaviour
 
     IEnumerator AttackRoutine()
     {
-        _Action.CanAttack = false;
-        yield return new WaitForSeconds(_Action.CD);
+        if (_Action != null)
+        {
+            _Action.CanAttack = false;
+            yield return new WaitForSeconds(_Action.CD);
         _Action.CanAttack = true;
         _attackRoutine = null;
+        }
+        else
+        {
+            _train.CanAttack = false;
+            yield return new WaitForSeconds(_train.CD);
+            _train.CanAttack = true;
+            _attackRoutine = null;
+        }
     }
 
 
 
- /*   public void CheckCollision(Collider2D c)
-    {
-        if (c.gameObject == _Target)
-        {
-            checkUpdate = StartCoroutine(CheckRoutine());
-            IEnumerator CheckRoutine()
-            {
-                while (true)
-                {
-                    if (_Action.CanAttack == true && _attackRoutine == null)
-                    {
-                        _player = c.gameObject;
-                        _Action.MyAnimator.SetTrigger("isAttacking");
-                        _attackRoutine = StartCoroutine(AttackRoutine());
-                    }
-                    yield return null;
-                }
-            }
-        }
-*/
-  //  }
+    /*   public void CheckCollision(Collider2D c)
+       {
+           if (c.gameObject == _Target)
+           {
+               checkUpdate = StartCoroutine(CheckRoutine());
+               IEnumerator CheckRoutine()
+               {
+                   while (true)
+                   {
+                       if (_Action.CanAttack == true && _attackRoutine == null)
+                       {
+                           _player = c.gameObject;
+                           _Action.MyAnimator.SetTrigger("isAttacking");
+                           _attackRoutine = StartCoroutine(AttackRoutine());
+                       }
+                       yield return null;
+                   }
+               }
+           }
+   */
+    //  }
 }
