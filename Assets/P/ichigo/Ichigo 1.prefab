@@ -20799,6 +20799,7 @@ GameObject:
   - component: {fileID: 5654387684261248525}
   - component: {fileID: 5654387684261248524}
   - component: {fileID: 3128193166873537280}
+  - component: {fileID: 3700871618660839570}
   m_Layer: 0
   m_Name: Ichigo 1
   m_TagString: Untagged
@@ -20865,6 +20866,26 @@ MonoBehaviour:
   _animator: {fileID: 5654387683373309178}
   _2nd: {fileID: 5654387682943144540}
   _mouv: {fileID: 0}
+--- !u!95 &3700871618660839570
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654387684261248626}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5654387684273418411
 GameObject:
   m_ObjectHideFlags: 0
