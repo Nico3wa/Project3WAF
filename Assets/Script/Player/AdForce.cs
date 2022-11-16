@@ -55,6 +55,23 @@ public class AdForce : MonoBehaviour
         }
     }
 
+    public void LauncHDown()
+    {
+        if (_savedCharacter != null)
+        {
+            //_savedCharacter.Damage(_MyDamage);
+
+            //for (int i = 0; i < _savedCharacter.Count; i++)
+            //{
+            //    _savedCharacter[i].Damage(_MyDamage);
+            //}
+
+            foreach (Rigidbody2D el in _savedCharacter)
+            {
+                rb.AddForce(-transform.up * 5000f);
+            }
+        }
 
 
-}
+    }
+    }

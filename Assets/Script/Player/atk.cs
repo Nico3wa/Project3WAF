@@ -8,7 +8,7 @@ public class atk : MonoBehaviour
 
     [SerializeField] int _MyDamage;
     [SerializeField] BaseDmgSo _dmg;
-
+    [SerializeField] PlayerStat _stat;
     public List<health> SavedCharacter { get => _savedCharacter;}
 
     // Start is called before the first frame update
@@ -62,6 +62,7 @@ public class atk : MonoBehaviour
 
             foreach (health el in _savedCharacter)
             {
+                _stat.CurrentKi += _stat.Gainki;
                 el.Damage(_MyDamage);
             }
         }

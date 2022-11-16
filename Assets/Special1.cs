@@ -13,27 +13,46 @@ public class Special1 : MonoBehaviour
     [SerializeField] Instanciate Instanciate;
     [SerializeField] Mouvement _action;
     [SerializeField] Animator _animator;
+    int _cosomation;
  
     [SerializeField] PlayableDirector GetsugaTensho;
     [SerializeField] PlayableDirector _air;
-
+    [SerializeField] PlayerStat _stat;
+    bool ready;
     public Transform Spawn { get => _spawn; set => _spawn = value; }
 
     private void Start()
     {
+        ready = false;
+        _cosomation = Instanciate.Consomation;
         _special.action.started += SpecialON;
         _object = Instanciate.Instance;
     }
-
+    private void Update()
+    {
+        if (_stat.CurrentKi >= _cosomation)
+        {
+            ready = true;
+        }
+        else
+        {
+            ready = false;
+        }
+    }
     private void SpecialON(InputAction.CallbackContext obj)
     {
-        if (_action._isGrounded && _action.Isdash == false && !_animator.GetBool("Mouv"))
-        {
-            GetsugaTensho.Play();
-        }
-        else if(!_animator.GetBool("doubleSaut") && _animator.GetBool("Landing") && _action.Isdash == false && !_animator.GetBool("Mouv"))
-        {
-            _air.Play();
+        if (ready) 
+        { 
+            if (_action._isGrounded && _action.Isdash == false && !_animator.GetBool("Mouv") && !_animator.GetBool("inDash"))
+            {
+                GetsugaTensho.Play();
+                _stat.CurrentKi -= _cosomation;
+            }
+            else if (!_animator.GetBool("doubleSaut") && _animator.GetBool("Landing") && !_animator.GetBool("inDash") && !_animator.GetBool("Mouv"))
+            {
+                _air.Play();
+                _stat.CurrentKi -= _cosomation;
+            }          
         }
         else
         {

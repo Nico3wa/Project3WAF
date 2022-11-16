@@ -39,7 +39,7 @@ public class Mouvement : MonoBehaviour
     [SerializeField] AnimationCurve[] _JumpHeight;
 
     [SerializeField] LayerMask _mask;
-     private bool candash;
+      bool candash;
      bool isdash;
     [SerializeField] float dashingPower;
     private float dashingCooldown = 1f;
@@ -58,6 +58,7 @@ public class Mouvement : MonoBehaviour
     public bool Attacking { get => _attacking; set => _attacking = value; }
     public Jump Jump1 { get => _jump; set => _jump = value; }
     public bool Isdash { get => isdash; set => isdash = value; }
+    public bool Candash { get => candash; set => candash = value; }
     #endregion
 
     #region state
@@ -246,16 +247,17 @@ public class Mouvement : MonoBehaviour
 
     private void AttackStart(InputAction.CallbackContext obj)
     {
-        if (isdash )
-        {
-            _animator.SetTrigger("DashAttack");
-            
-                }
-
-        else { 
+        if(_isGrounded) 
+        { 
             _animator.SetTrigger("attack");
              _attacking = true;
-                }
+        }
+        else if (_jump == Jump.Landing)
+        {
+
+            _animator.SetTrigger("JumpAtk");
+            _attacking = true;
+        }
 
         _Attack = Attack.Base;
     }

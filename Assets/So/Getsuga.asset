@@ -16,3 +16,4 @@ MonoBehaviour:
   _value: 15
   _life: 1
   _dmg: 15
+  _consomation: 50

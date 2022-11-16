@@ -6,7 +6,6 @@ public class Destroy : StateMachineBehaviour
 {
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GameObject.Destroy(animator.gameObject);
+        GameObject.Destroy(animator.transform.parent.parent.gameObject);
     }
 }
-

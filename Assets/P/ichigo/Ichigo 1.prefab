@@ -52,8 +52,10 @@ MonoBehaviour:
   _spawn: {fileID: 512638361262805574}
   Instanciate: {fileID: 11400000, guid: e5fef1381bd15b3419139733e34d14fc, type: 2}
   _action: {fileID: 5654387682969205372}
+  _animator: {fileID: 0}
   GetsugaTensho: {fileID: 662101867396942118}
   _air: {fileID: 9126448102839807693}
+  _stat: {fileID: 0}
 --- !u!320 &662101867396942118
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -152,6 +154,7 @@ MonoBehaviour:
   _savedCharacter: []
   _MyDamage: 0
   _dmg: {fileID: 11400000, guid: 774b52af0cea906429dd57a9926a2655, type: 2}
+  _stat: {fileID: 3128193166873537280}
 --- !u!114 &9138659002167062919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6011,8 +6014,8 @@ GameObject:
   - component: {fileID: 5654387683373309175}
   - component: {fileID: 5654387683373309174}
   - component: {fileID: 5364048464443251438}
-  - component: {fileID: 6795131921023812754}
   - component: {fileID: 7576755264491823596}
+  - component: {fileID: 7679110690956083610}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -6169,19 +6172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attack: {fileID: 6341756950552796162}
---- !u!114 &6795131921023812754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5654387683373309176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d27ed0eb3418ce4bb180a7e12626a12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _add: {fileID: 9138659002167062919}
 --- !u!114 &7576755264491823596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6195,6 +6185,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sp1: {fileID: 8428207542502181552}
+--- !u!114 &7679110690956083610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654387683373309176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9373b65773930e4992c7473c213cae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _add: {fileID: 9138659002167062919}
 --- !u!1 &5654387683376898976
 GameObject:
   m_ObjectHideFlags: 0
@@ -20838,7 +20841,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.64
+  m_LinearDrag: 2
   m_AngularDrag: 0.8
   m_GravityScale: 0.7
   m_Material: {fileID: 0}

@@ -11,7 +11,7 @@ public class CharacterSo : ScriptableObject
     [SerializeField] int _speed;
     [SerializeField] int _atkSPeed;
     [SerializeField] string _name;
-    
+    [SerializeField] int addki;
 
     public int Ki { get => _ki; set => _ki = value; }
     public int Speed { get => _speed; set => _speed = value; }
@@ -19,4 +19,5 @@ public class CharacterSo : ScriptableObject
     public string Name { get => _name; set => _name = value; }
     public int Maxki { get => _Maxki; set => _Maxki = value; }
     public int AtkSPeed { get => _atkSPeed; set => _atkSPeed = value; }
+    public int Addki { get => addki; set => addki = value; }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0b67e7f4009adf4c9b348e43de46e58, type: 3}
-  m_Name: New Character So
+  m_Name: Ichigo
   m_EditorClassIdentifier: 
   _ki: 0
   _Maxki: 100
@@ -18,3 +18,4 @@ MonoBehaviour:
   _speed: 6
   _atkSPeed: 2
   _name: Ichigo
+  addki: 5

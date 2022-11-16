@@ -11,14 +11,16 @@ public class PlayerStat: MonoBehaviour
     int maxKi;
     int currentKi;
     [SerializeField] Mouvement _mouv;
-
+    int gainki;
     public int CurrentKi { get => currentKi; set => currentKi = value; }
+    public int Gainki { get => gainki; set => gainki = value; }
 
     // Start is called before the first frame update
     void Start()
     {
+        gainki = _Stat.Addki;
         _currentLife = _Stat.MaxHp;
-        maxKi = _Stat.Maxki;
+        maxKi = _Stat.Maxki; 
         currentKi = _Stat.Ki;
     }
 
@@ -28,6 +30,7 @@ public class PlayerStat: MonoBehaviour
         {
             currentKi = maxKi;
         }
+         
     }
 
     public void Damage(int amount)

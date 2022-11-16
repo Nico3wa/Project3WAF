@@ -7,7 +7,6 @@ public class Damage : MonoBehaviour
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] Instanciate inst;
     [SerializeField] List<health> _savedCharacter;
-
     [SerializeField] int damage;
 
     bool _Aply;
