@@ -18,6 +18,6 @@ public class Hpbar : MonoBehaviour
         _MySlider.minValue = 0;
         _MySlider.maxValue = _stat.MaxLife;
         _MySlider.value = _stat.CurrentLife;
-        _MySlider.value = _stat.CurrentLife;
+      
     }
 }

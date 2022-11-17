@@ -272,6 +272,7 @@ public class Mouvement : MonoBehaviour
     private void updateMove(InputAction.CallbackContext obj)
     {
         _playerMovement = obj.ReadValue<Vector2>();
+        
         if (_jump == Jump.Landing)
         {
             _playerMovement = obj.ReadValue<Vector2>();
@@ -284,12 +285,8 @@ public class Mouvement : MonoBehaviour
 
     private void _MoveStart(InputAction.CallbackContext obj)
     {
+       
     
-       if (_attacking || isdash) 
-        {
-                
-        
-        }
         if(_input.currentControlScheme == "Keyboard")
         {
             var interval = Time.time - _lastInputTime;
@@ -325,16 +322,15 @@ public class Mouvement : MonoBehaviour
         {
             return;
         }
-        if (_attacking)
+        if (_animator.GetBool("OnAttack"))
         {
-            PlayerState = StatePlayer.IDLE;
-           
+            _currentspeed = 0; 
+            candash = false;
         }
-        
-                
+
         //  SpeedChange---------------
-     
-        
+
+
 
         //----------------------
 
@@ -429,6 +425,7 @@ public class Mouvement : MonoBehaviour
 
     private IEnumerator Dash(float sign)
     {
+        Debug.Log("dash");
         _DashDust.Play();
         _animator.SetTrigger("Dash");
         candash = false;
