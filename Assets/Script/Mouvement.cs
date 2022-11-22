@@ -88,7 +88,6 @@ public class Mouvement : MonoBehaviour
     {
         // attack
         _AttackInput.action.started += AttackStart;
-        _AttackInput.action.canceled += AttackEnd;
 
         // movement
         _MoveInput.action.started += _MoveStart;
@@ -119,7 +118,6 @@ public class Mouvement : MonoBehaviour
     {
         // attack
         _AttackInput.action.started -= AttackStart;
-        _AttackInput.action.started -= AttackEnd;
 
         // movement
         _MoveInput.action.started -= _MoveStart;
@@ -239,7 +237,7 @@ public class Mouvement : MonoBehaviour
 
     }
 
-    private void AttackEnd(InputAction.CallbackContext obj)
+    public void AttackEnd()
     {
         _attacking = false;
         _Attack = Attack.none;
@@ -271,6 +269,8 @@ public class Mouvement : MonoBehaviour
 
     private void updateMove(InputAction.CallbackContext obj)
     {
+        if (_attacking) { _playerMovement = Vector2.zero; return; }
+
         _playerMovement = obj.ReadValue<Vector2>();
         
         if (_jump == Jump.Landing)
@@ -285,8 +285,8 @@ public class Mouvement : MonoBehaviour
 
     private void _MoveStart(InputAction.CallbackContext obj)
     {
-       
-    
+        if (_attacking) { _playerMovement = Vector2.zero; return; }
+
         if(_input.currentControlScheme == "Keyboard")
         {
             var interval = Time.time - _lastInputTime;
@@ -318,14 +318,18 @@ public class Mouvement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isdash)
-        {
-            return;
-        }
         if (_animator.GetBool("OnAttack"))
         {
-            _currentspeed = 0; 
+            _currentspeed = 0;
+            if (candash)
+            {
             candash = false;
+            }
+        }
+        else
+        {
+            _currentspeed = _myChar.Speed;
+            candash = true;
         }
 
         //  SpeedChange---------------

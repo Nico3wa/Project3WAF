@@ -173,6 +173,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9fbf6a0a-a62a-4ee4-9069-3400247e6cea",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Manette",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "123c6d56-50a6-4f75-b624-7255f5805e7e",
                     "path": "<Keyboard>/ctrl",
                     "interactions": "",
