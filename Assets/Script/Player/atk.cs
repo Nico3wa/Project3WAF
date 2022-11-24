@@ -9,7 +9,10 @@ public class atk : MonoBehaviour
     [SerializeField] int _MyDamage;
     [SerializeField] BaseDmgSo _dmg;
     [SerializeField] PlayerStat _stat;
+    [SerializeField] Mouvement _action;
+    [SerializeField] AudioSource _audio;
     public List<health> SavedCharacter { get => _savedCharacter;}
+    public AudioSource Audio { get => _audio; set => _audio = value; }
 
     // Start is called before the first frame update
 
@@ -53,6 +56,10 @@ public class atk : MonoBehaviour
     {
         if (_savedCharacter != null)
         {
+         /*   if (_action.Hit.isPlaying)
+            {
+                _action.Hit.Stop();
+            }*/
             //_savedCharacter.Damage(_MyDamage);
 
             //for (int i = 0; i < _savedCharacter.Count; i++)
@@ -62,6 +69,7 @@ public class atk : MonoBehaviour
 
             foreach (health el in _savedCharacter)
             {
+              // _audio.Play();
                 _stat.CurrentKi += _stat.Gainki;
                 el.Damage(_MyDamage);
             }

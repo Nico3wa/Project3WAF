@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ForceProxy : MonoBehaviour
 {
-    [SerializeField] AdForce _add;
+    [SerializeField] Testar _add;
     
     public void LaunchUp()
     {

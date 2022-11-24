@@ -18,6 +18,7 @@ public class Special1 : MonoBehaviour
     [SerializeField] PlayableDirector GetsugaTensho;
     [SerializeField] PlayableDirector _air;
     [SerializeField] PlayerStat _stat;
+    [SerializeField] atk _atk;
     bool ready;
     public Transform Spawn { get => _spawn; set => _spawn = value; }
 
@@ -30,7 +31,8 @@ public class Special1 : MonoBehaviour
     }
     private void Update()
     {
-        if (_stat.CurrentKi >= _cosomation)
+        if (_stat.CurrentKi >= _cosomation && _action.Attacking == false
+            || _stat.CurrentKi >= _cosomation && _action.JumpAttack == false)
         {
             ready = true;
         }
@@ -45,11 +47,15 @@ public class Special1 : MonoBehaviour
         { 
             if (_action._isGrounded && _action.Isdash == false && !_animator.GetBool("Mouv") && !_animator.GetBool("inDash"))
             {
+                _action.Animator.SetBool("OnAttack",false);
+                _action.Animator.SetBool("AirAtk", false);
                 GetsugaTensho.Play();
                 _stat.CurrentKi -= _cosomation;
             }
             else if (!_animator.GetBool("doubleSaut") && _animator.GetBool("Landing") && !_animator.GetBool("inDash") && !_animator.GetBool("Mouv"))
             {
+                _action.Animator.SetBool("OnAttack", false);
+                _action.Animator.SetBool("AirAtk", false);
                 _air.Play();
                 _stat.CurrentKi -= _cosomation;
             }          

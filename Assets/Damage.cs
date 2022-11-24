@@ -44,6 +44,7 @@ public class Damage : MonoBehaviour
             {
                 if(_Aply == true)
                 {
+                    c.attachedRigidbody.mass = 1;
                     c.attachedRigidbody.AddForce(_rb.velocity * 0.2f, ForceMode2D.Impulse);
                     foreach (health el in _savedCharacter)
                     {
@@ -63,7 +64,7 @@ public class Damage : MonoBehaviour
     }
     private IEnumerator Dmge()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         _Aply = true;
     }
 

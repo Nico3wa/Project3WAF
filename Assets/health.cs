@@ -12,9 +12,10 @@ public class health : MonoBehaviour
     int maxHp;
     [SerializeField] GameObject _Slider;
 
-
+    [SerializeField] AudioSource _hurt;
     [SerializeField] HealthSo _Maxhp;
-
+    bool _onhit;
+    bool _ondamage;
     public int Currenthp { get => currenthp; set => currenthp = value; }
     public int MaxHp { get => maxHp; set => maxHp = value; }
 
@@ -29,6 +30,21 @@ public class health : MonoBehaviour
         {
             _Slider.SetActive(true);
         }
+        _onhit = _animator.GetBool("hit");
+          _hurt.loop = _ondamage;
+
+        if (_onhit)
+        {
+            if (_hurt.isPlaying && _ondamage == true)
+            {
+
+            }
+
+            else _hurt.Play();_ondamage = true;
+        }
+        else _ondamage = false;
+
+        
     }
     // Update is called once per frame
     public void Damage(int amount)
@@ -38,8 +54,8 @@ public class health : MonoBehaviour
         if (_animator != null)
         {
             _animator.SetTrigger("Hit");
+            
         }
-
 
         if (currenthp <= 0)
         {

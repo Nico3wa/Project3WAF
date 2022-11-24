@@ -1,22 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
-public class AdForce : MonoBehaviour
+public class Testar : MonoBehaviour
 {
 
-    [SerializeField] List<Rigidbody2D> _savedCharacter;
-
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] targetSo _tar;
-
+    [SerializeField] List<ImEnemy> _savedCharacter;
     private void OnTriggerEnter2D(Collider2D col)
-    { 
-        if (col.GetComponent<Rigidbody2D>() == null) return;
-        var h = col.GetComponent<Rigidbody2D>();
-        if (rb == null) rb = _tar.Man.Rb;
-        if(h = rb)
+    {
+        if (col.attachedRigidbody == null) return;
+        var h = col.attachedRigidbody.GetComponent<ImEnemy>();
+        if (h != null)
         {
             if (_savedCharacter.Contains(h))
             {
@@ -26,15 +20,14 @@ public class AdForce : MonoBehaviour
             {
                 _savedCharacter.Add(h);
             }
+
         }
-        
     }
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.GetComponent<Rigidbody2D>() == null) return;
-        var h = col.GetComponent<Rigidbody2D>();
-        if (rb == null) rb = _tar.Man.Rb;
-        if (h == rb)
+        if (col.attachedRigidbody == null) return;
+        var h = col.attachedRigidbody.GetComponent<ImEnemy>();
+        if (h != null)
         {
             if (_savedCharacter.Contains(h))
             {
@@ -53,11 +46,16 @@ public class AdForce : MonoBehaviour
             //    _savedCharacter[i].Damage(_MyDamage);
             //}
 
-          foreach (Rigidbody2D el in _savedCharacter)
+            foreach (ImEnemy el in _savedCharacter)
             {
-                rb.mass = 1;
-                rb.AddForce(transform.up * 5000f);
+                el.Rb.mass = 1;
+               el.Rb.AddForce(transform.up * 5000f);
                 StartCoroutine(ResetForce());
+                IEnumerator ResetForce()
+                {
+                    yield return new WaitForSeconds(0.5f);
+                    el.Rb.mass = 20;
+                }
             }
         }
     }
@@ -73,21 +71,20 @@ public class AdForce : MonoBehaviour
             //    _savedCharacter[i].Damage(_MyDamage);
             //}
 
-            foreach (Rigidbody2D el in _savedCharacter)
+            foreach (ImEnemy el in _savedCharacter)
             {
-                rb.mass = 1;
-                rb.AddForce(-transform.up * 5000f);
+                el.Rb.mass = 1;
+               el.Rb.AddForce(-transform.up * 5000f);
                 StartCoroutine(ResetForce());
+                IEnumerator ResetForce()
+                {
+                    yield return new WaitForSeconds(0.5f);
+                    el.Rb.mass = 20;
+                }
             }
         }
 
 
     }
-    IEnumerator ResetForce()
-    {
-        yield return new WaitForSeconds(0.2f);
-        rb.mass = 20;
-    }
-    }
-
+}
 

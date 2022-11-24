@@ -14,15 +14,22 @@ public class training : MonoBehaviour
     [SerializeField] GameObject target;
     State _State;
     [SerializeField] float _CD;
-
+    [SerializeField] Management _man;
+    [SerializeField] targetSo _tar;
     public Animator MyAnimator { get => _myAnimator; set => _myAnimator = value; }
 
     public State State1 { get => _State; set => _State = value; }
     public float CD { get => _CD;}
     public bool CanAttack { get => _CanAttack; set => _CanAttack = value; }
 
+
+    private void Awake()
+    {
+        _man = _tar.Man;
+    }
     void Start()
     {
+          target = _man.Player;
         _CD = _myso.AttackCD;
         _State = State.IDLE;
         _myspeed = _myso.Speed;
@@ -34,7 +41,6 @@ public class training : MonoBehaviour
 
     private void Update()
     {
-
         switch (_State)
         {
             case State.IDLE:

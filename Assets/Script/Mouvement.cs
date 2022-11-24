@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 
@@ -59,6 +60,8 @@ public class Mouvement : MonoBehaviour
     public Jump Jump1 { get => _jump; set => _jump = value; }
     public bool Isdash { get => isdash; set => isdash = value; }
     public bool Candash { get => candash; set => candash = value; }
+    public bool JumpAttack { get => _jumpAttack; set => _jumpAttack = value; }
+    public AudioSource Hit { get => _hit; set => _hit = value; }
     #endregion
 
     #region state
@@ -70,11 +73,16 @@ public class Mouvement : MonoBehaviour
 
     public enum Jump { Jumping, Landing, none, addJump, }
     #endregion
+    bool _jumpAttack;
     bool _attacking;
     Coroutine _jumpUpRoutine;
     int _jumpCount;
     [SerializeField] CharacterSo _myChar;
+    [SerializeField] atk _atk;
+    #region Sound
+    [SerializeField] AudioSource _hit;
 
+    #endregion
 
     // Start is called before the first frame update
 
@@ -254,7 +262,7 @@ public class Mouvement : MonoBehaviour
         {
 
             _animator.SetTrigger("JumpAtk");
-            _attacking = true;
+            _jumpAttack = true;
         }
 
         _Attack = Attack.Base;
@@ -270,8 +278,10 @@ public class Mouvement : MonoBehaviour
     private void updateMove(InputAction.CallbackContext obj)
     {
         if (_attacking) { _playerMovement = Vector2.zero; return; }
-
+        else
+        {
         _playerMovement = obj.ReadValue<Vector2>();
+        }
         
         if (_jump == Jump.Landing)
         {
@@ -425,6 +435,37 @@ public class Mouvement : MonoBehaviour
 
         }
         //---------------
+
+        if(isdash == false)
+        {
+            _rb.gravityScale = 1;
+        }
+
+        _jumpAttack = _animator.GetBool("AirAtk");
+        _attacking = _animator.GetBool("OnAttack");
+        if (_attacking)
+        {
+            if (_hit.isPlaying)
+            {
+
+            }
+            else
+            {
+                _hit.PlayDelayed(0.3f);
+            }
+        }
+       
+        if (_jumpAttack)
+        {
+            if (_hit.isPlaying )
+            {
+
+            }
+            else
+            {
+                _hit.PlayDelayed(0.4f);
+            }
+        }
     }
 
     private IEnumerator Dash(float sign)

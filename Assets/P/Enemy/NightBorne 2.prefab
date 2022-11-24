@@ -582,7 +582,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _animator: {fileID: 5176024538976727832}
-  _Slider: {fileID: 0}
+  _Slider: {fileID: 4743069824096586572}
   _Maxhp: {fileID: 11400000, guid: 66d838f79391e65409d5cfb7a207c1ec, type: 2}
 --- !u!114 &2915043516496350427
 MonoBehaviour:
@@ -867,5 +867,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e135461dcd3e62946b2954332e4b0c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Push: 150
   _savedCharacter: []
-  "_r\xE9pulse": 10
