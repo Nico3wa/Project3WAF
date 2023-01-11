@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProxyEnemy : MonoBehaviour
 {
-    [SerializeField] triggerAttack _trigg;
+    [SerializeField] KnightAtk _trigg;
     [SerializeField] EnemySo _so;
     public void LaunchAttack()
     {

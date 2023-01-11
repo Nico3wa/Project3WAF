@@ -15,7 +15,7 @@ public class Mouvement : MonoBehaviour
     [SerializeField] InputActionReference _MoveInput;
     [SerializeField] InputActionReference _AttackInput;
     [SerializeField] InputActionReference _JumpInput;
-    [SerializeField] InputActionReference _TransformInput;
+  //  [SerializeField] InputActionReference _TransformInput;
     [SerializeField] InputActionReference _dash;
     #endregion
     //    [SerializeField] InputActionReference _dash;
@@ -108,7 +108,7 @@ public class Mouvement : MonoBehaviour
         _JumpInput.action.canceled += JumpStop;
 
         // Transform
-        _TransformInput.action.started += StartTransform;
+      //  _TransformInput.action.started += StartTransform;
 
 
         _dash.action.started += Dash;
@@ -138,7 +138,7 @@ public class Mouvement : MonoBehaviour
         _JumpInput.action.canceled -= JumpStop;
 
         // Transform
-        _TransformInput.action.started -= StartTransform;
+       // _TransformInput.action.started -= StartTransform;
     }
 
     void Start()

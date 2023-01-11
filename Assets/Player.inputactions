@@ -216,6 +216,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Training",
+            "id": "6e7fd2cc-980a-437e-990b-1bb9ac00b541",
+            "actions": [
+                {
+                    "name": "Regen",
+                    "type": "Button",
+                    "id": "3f0d1993-29bc-4a9b-9b85-feb4eca1b9ea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f2f25430-58d1-4f8a-b195-1d96c8799244",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Regen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

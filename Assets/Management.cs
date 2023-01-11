@@ -32,6 +32,13 @@ public class Management : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
+        if (_enemy != null) return;
+        if (_enemy == null)
+        {
+           _enemy = collision.transform.parent.gameObject;
+        }
+
         if (collision.attachedRigidbody == null) return;
         if (collision.gameObject == _enemy)
         {

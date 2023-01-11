@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DetectPlayer : MonoBehaviour
 {
-    [SerializeField] GameObject _Target;
+    [SerializeField] List<GameObject> _target;
     [SerializeField] EnemyMouv _Action;
 
     GameObject _player;
@@ -12,26 +12,35 @@ public class DetectPlayer : MonoBehaviour
     public GameObject Player { get => _player; }
 
     // Start is called before the first frame update
-    void OnTriggerEnter2D(Collider2D c) => CheckCollision(c);
-    void OnTriggerStay2D(Collider2D c) => CheckCollision(c);
-    void OnTriggerExit2D(Collider2D c)
+    void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.gameObject == _Target)
+        if (c.attachedRigidbody == null) return;
+        var h = c.attachedRigidbody.GetComponentInParent<PlayerStat>();
+        if (h != null)
         {
-           _player = null;
-          //  _Action.State1 = State.IDLE;
+            if (_target.Contains(h.gameObject))
+            {
+
+            }
+            else
+            {
+                _target.Add(h.gameObject);
+                _player = _target[0];
+            }
+
         }
     }
-    public void CheckCollision(Collider2D c)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (c.gameObject == _Target)
+        if (!collision.attachedRigidbody) return;
+        var h = collision.attachedRigidbody.GetComponentInParent<PlayerStat>();
+        if (h != null)
         {
-            _player = c.gameObject;
-            ;
-        }
-        else
-        {
-            return;
+            if(_target.Contains(collision.gameObject) == h)
+            {
+                _target.Remove(h.gameObject);
+            }
         }
     }
+
 }

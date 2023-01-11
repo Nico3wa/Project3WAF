@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Detect
   - Water
   - UI
   - Wall
@@ -22,8 +22,8 @@ TagManager:
   - Checkpoints
   - Ground
   - Entity
-  - 
-  - 
+  - CombatZone
+  - Player
   - 
   - 
   - 

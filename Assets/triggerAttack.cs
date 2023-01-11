@@ -24,7 +24,7 @@ public class triggerAttack : MonoBehaviour
                     _Action.MyAnimator.SetTrigger("isAttacking");
                     _attackRoutine = StartCoroutine(AttackRoutine());
                 }
-                else
+               
                 {
                     _train.MyAnimator.SetTrigger("isAttacking");
                     _attackRoutine = StartCoroutine(AttackRoutine());
@@ -42,27 +42,26 @@ public class triggerAttack : MonoBehaviour
     {
         if (col.attachedRigidbody == null) return;
         var h = col.attachedRigidbody.GetComponent<PlayerStat>();
+        if (h != null)
         {
-            if (h != null)
+            if (_savedCharacter.Contains(h))
             {
-                if (_savedCharacter.Contains(h))
+                if (_Action != null)
                 {
-                    if (_Action != null && _Action.CanAttack)
-                    {
-                        _Action.MyAnimator.SetTrigger("isAttacking");
-                        _attackRoutine = StartCoroutine(AttackRoutine());
-                    }
-                    else if ( _train != null && _train.CanAttack)
-                    {
-                        _train.MyAnimator.SetTrigger("isAttacking");
-                        _attackRoutine = StartCoroutine(AttackRoutine());
+                    _Action.MyAnimator.SetTrigger("isAttacking");
+                    _attackRoutine = StartCoroutine(AttackRoutine());
 
-                    }
+                }
+               
+                {
+                    _train.MyAnimator.SetTrigger("isAttacking");
+                    _attackRoutine = StartCoroutine(AttackRoutine());
+
                 }
             }
             else
             {
-                return;
+                _savedCharacter.Add(h);
             }
 
         }
@@ -89,8 +88,9 @@ public class triggerAttack : MonoBehaviour
             yield return new WaitForSeconds(_Action.CD);
         _Action.CanAttack = true;
         _attackRoutine = null;
+         
         }
-        else
+      else
         {
             _train.CanAttack = false;
             yield return new WaitForSeconds(_train.CD);
